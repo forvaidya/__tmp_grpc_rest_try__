@@ -1,0 +1,14 @@
+# Core dependencies for gRPC + REST Gateway System
+grpcio>=1.58.0
+grpcio-tools>=1.58.0
+fastapi>=0.104.0
+uvicorn[standard]>=0.23.0
+pydantic>=2.4.0
+redis>=5.0.0
+
+# Additional dependencies for production use
+protobuf>=4.24.0
+python-multipart>=0.0.6
+
+# Optional: for enhanced development experience
+requests>=2.31.0  # for testing REST endpoints

@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package product;
+
+// Product message definition
+message Product {
+  int32 id = 1;
+  int32 stock = 2;
+  double price = 3;
+}
+
+// Request message for creating a product
+message CreateProductRequest {
+  Product product = 1;
+}
+
+// Response message for product operations
+message ProductResponse {
+  bool success = 1;
+  string message = 2;
+  Product product = 3;
+}
+
+// Request message for getting a product by ID
+message GetProductRequest {
+  int32 id = 1;
+}
+
+// Request message for updating product stock
+message UpdateStockRequest {
+  int32 id = 1;
+  int32 new_stock = 2;
+}
+
+// Service definition for Product management
+service ProductService {
+  // Create a new product
+  rpc CreateProduct(CreateProductRequest) returns (ProductResponse);
+  
+  // Get a product by ID
+  rpc GetProduct(GetProductRequest) returns (ProductResponse);
+  
+  // Update product stock
+  rpc UpdateStock(UpdateStockRequest) returns (ProductResponse);
+}
