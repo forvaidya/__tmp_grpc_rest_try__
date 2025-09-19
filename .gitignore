@@ -205,3 +205,14 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# Generated gRPC files (keep the .proto source but ignore generated .py files)
+*_pb2.py
+*_pb2_grpc.py
+
+# TLS/SSL certificates (for security)
+certs/
+*.crt
+*.key
+*.pem
+*.csr

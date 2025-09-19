@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package product;
+
+// Product message definition
+message Product {
+    int32 id = 1;
+    int32 stock = 2;
+    double price = 3;
+    string name = 4;
+    string description = 5;
+}
+
+// Request message for getting a product by ID
+message GetProductRequest {
+    int32 id = 1;
+}
+
+// Response message for product operations
+message ProductResponse {
+    Product product = 1;
+    bool success = 2;
+    string message = 3;
+}
+
+// Request message for listing products
+message ListProductsRequest {
+    int32 limit = 1;
+    int32 offset = 2;
+}
+
+// Response message for listing products
+message ListProductsResponse {
+    repeated Product products = 1;
+    int32 total = 2;
+    bool success = 3;
+    string message = 4;
+}
+
+// Request message for deleting a product
+message DeleteProductRequest {
+    int32 id = 1;
+}
+
+// Simple response message
+message SimpleResponse {
+    bool success = 1;
+    string message = 2;
+}
+
+// Product service definition
+service ProductService {
+    // Create or update a product
+    rpc CreateProduct(Product) returns (ProductResponse);
+    
+    // Get a product by ID
+    rpc GetProduct(GetProductRequest) returns (ProductResponse);
+    
+    // List all products
+    rpc ListProducts(ListProductsRequest) returns (ListProductsResponse);
+    
+    // Delete a product
+    rpc DeleteProduct(DeleteProductRequest) returns (SimpleResponse);
+}
