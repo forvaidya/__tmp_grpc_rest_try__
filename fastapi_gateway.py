@@ -55,7 +55,7 @@ class ProductRequest(BaseModel):
         return round(v, 2)  # Round to 2 decimal places
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "id": 1,
                 "stock": 10,
@@ -71,7 +71,7 @@ class ProductResponse(BaseModel):
     price: float
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "id": 1,
                 "stock": 10,
@@ -85,7 +85,7 @@ class StockUpdateRequest(BaseModel):
     new_stock: int = Field(..., ge=0, description="New stock level (cannot be negative)")
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "new_stock": 25
             }
@@ -99,7 +99,7 @@ class ApiResponse(BaseModel):
     data: Optional[ProductResponse] = None
     
     class Config:
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "success": True,
                 "message": "Operation completed successfully",
